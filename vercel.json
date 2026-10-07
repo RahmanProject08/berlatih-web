@@ -1,0 +1,13 @@
+﻿{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/api/proses_ai",
+      "destination": "/api/proses_ai.py"
+    },
+    {
+      "source": "/api/webhook",
+      "destination": "/api/webhook.js"
+    }
+  ]
+}

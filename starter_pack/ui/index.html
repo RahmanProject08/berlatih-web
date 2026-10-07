@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AegisGuard - Autonomous Security & Threat Intelligence Suite</title>
+  <meta name="description" content="AegisGuard Enterprise Security Platform with HMAC cryptographic telemetry, dual AI engine concurrency, and real-time defense log stream.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="mesh-bg"></div>
+
+  <!-- TOP BAR NAVIGATION -->
+  <header class="top-nav">
+    <div class="nav-left">
+      <div class="brand-badge">
+        <span class="shield-glyph">◈</span>
+      </div>
+      <div>
+        <div class="brand-title">AegisGuard <span class="tag-version">v2.4-PRO</span></div>
+        <div class="brand-sub">ENTERPRISE THREAT INTELLIGENCE & TELEMETRY HUB</div>
+      </div>
+    </div>
+    
+    <div class="nav-stats">
+      <div class="stat-pill">
+        <span class="radar-dot"></span>
+        <span class="stat-text">DEFENSE NODE: <strong class="text-neon-cyan">ONLINE (IAD-1)</strong></span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-text">ENGINE: <strong class="text-neon-purple">NVIDIA NIM</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout-wrapper">
+    <!-- HERO METRIC BANNER (Requirement 9.2) -->
+    <section class="banner-zone">
+      <div id="mainMetricCard" class="primary-hero-card state-safe">
+        <div class="card-glow-overlay"></div>
+        <div class="hero-top-row">
+          <div class="badge-container">
+            <span class="status-category">SECURITY POSTURE STATUS</span>
+            <span id="metricBadge" class="status-pill safe">AMAN</span>
+          </div>
+          <div class="telemetry-meta">
+            <span>LAST SYNC: <span id="lastEventTimestamp" class="mono text-highlight">STANDBY</span></span>
+          </div>
+        </div>
+
+        <div class="hero-headline-row">
+          <div class="headline-left">
+            <h1 id="metricStatusText" class="main-headline">SYSTEM SECURED</h1>
+            <p id="metricSubText" class="sub-headline">
+              Sistem pertahanan database beroperasi optimal. Semua integritas webhook terverifikasi melalui enkripsi HMAC dan lalu lintas data stabil.
+            </p>
+          </div>
+          <div class="headline-stat-box">
+            <div class="mini-kpi">
+              <span class="kpi-label">HMAC TELEMETRY</span>
+              <span id="hmacIndicator" class="kpi-value text-safe">VALIDATED (SHA-256)</span>
+            </div>
+            <div class="mini-kpi">
+              <span class="kpi-label">AI DUAL CONCURRENCY</span>
+              <span class="kpi-value text-cyan">asyncio.gather ACTIVE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN TWO-COLUMN LAB & SIMULATOR (Requirements 9.3 & 9.4) -->
+    <div class="dual-grid">
+      <!-- COLUMN 1: CRYPTOGRAPHIC TELEMETRY DISPATCHER -->
+      <section class="panel-box" id="webhookSimulatorCard">
+        <div class="panel-header">
+          <div class="panel-title-group">
+            <span class="icon-chip">🔐</span>
+            <div>
+              <h2>HMAC Telemetry Dispatcher</h2>
+              <p class="panel-tagline">Client-Side Web Crypto API Signature Verification</p>
+            </div>
+          </div>
+          <span class="tech-chip">SHA-256 SubtleCrypto</span>
+        </div>
+
+        <div class="panel-body">
+          <p class="panel-narrative">
+            Modul simulasi pengiriman payload webhook dari cluster Supabase. Signature digital dikomputasi langsung pada hardware browser (Zero-Trust Sandbox).
+          </p>
+
+          <form id="webhookForm" class="control-form">
+            <div class="grid-2">
+              <div class="input-field-group">
+                <label for="eventStatus">Tipe Evaluasi Status</label>
+                <select id="eventStatus" class="custom-select">
+                  <option value="AMAN">AMAN — Normal Authorized Operation</option>
+                  <option value="BAHAYA" selected>BAHAYA — Suspicious Anomaly Detected</option>
+                </select>
+              </div>
+
+              <div class="input-field-group">
+                <label for="threatLevel">Tingkat Ancaman (Risk Level)</label>
+                <select id="threatLevel" class="custom-select">
+                  <option value="0">Tier 0 — Low Impact</option>
+                  <option value="1">Tier 1 — Minor Incident</option>
+                  <option value="2">Tier 2 — Elevated Threat</option>
+                  <option value="3" selected>Tier 3 — Critical Attack Vector</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="input-field-group">
+              <label for="reportMessage">Detail Laporan Ancaman / Payload</label>
+              <input type="text" id="reportMessage" class="custom-input" value="Percobaan injeksi query auth skema terdeteksi pada node master" placeholder="Detail payload...">
+            </div>
+
+            <div class="input-field-group">
+              <label for="hmacSecret">Shared Cryptographic Secret Key</label>
+              <input type="text" id="hmacSecret" class="custom-input mono" value="default_hmac_secret_key_2026" placeholder="Secret key...">
+              <span class="field-hint">Kunci simetris bersama antara node Supabase dan fungsi Vercel.</span>
+            </div>
+
+            <div class="tamper-box">
+              <label class="toggle-control" for="simulateTamper">
+                <input type="checkbox" id="simulateTamper">
+                <span class="toggle-slider"></span>
+                <span class="toggle-label">Simulasikan Serangan Modifikasi Data (Tampered Signature Attack)</span>
+              </label>
+            </div>
+
+            <div class="signature-display-box">
+              <div class="sig-header">
+                <span>DIGITAL SIGNATURE COMPUTED (x-signature)</span>
+                <span class="algo-pill">HMAC-SHA256</span>
+              </div>
+              <div id="hmacPreview" class="sig-value mono">Menunggu input...</div>
+            </div>
+
+            <button type="submit" id="submitWebhookBtn" class="btn-action-primary">
+              <span class="btn-icon">⚡</span>
+              <span>Kirim Payload Terverifikasi HMAC</span>
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- COLUMN 2: ASYNC AI INFERENCE ACCELERATOR -->
+      <section class="panel-box" id="aiBenchmarkCard">
+        <div class="panel-header">
+          <div class="panel-title-group">
+            <span class="icon-chip">⚡</span>
+            <div>
+              <h2>Dual AI Threat Analyzer</h2>
+              <p class="panel-tagline">NVIDIA NIM Parallel Inference Engine</p>
+            </div>
+          </div>
+          <span class="tech-chip purple">FastAPI asyncio.gather</span>
+        </div>
+
+        <div class="panel-body">
+          <p class="panel-narrative">
+            Pengujian konkurensi model analitik: Model RF (0.3s) & Model SVM (0.5s). Operasi dieksekusi secara simultan agar total waktu eksekusi konvergen pada nilai latensi maksimum (~0.5 detik).
+          </p>
+
+          <div class="input-field-group">
+            <label for="aiInputText">Data Payload / Log Query untuk Dianalisis</label>
+            <input type="text" id="aiInputText" class="custom-input" value="UNION SELECT username, password_hash FROM auth_users--" placeholder="Masukkan string data...">
+          </div>
+
+          <button id="runAiBtn" class="btn-action-purple">
+            <span class="btn-icon">▶</span>
+            <span>Jalankan Analisis AI Paralel</span>
+          </button>
+
+          <!-- BENCHMARK DISPLAY -->
+          <div class="ai-score-card">
+            <div class="score-header">
+              <span class="score-title">PARALLEL CONCURRENCY LATENCY</span>
+              <span class="score-badge">TARGET &le; 0.6s</span>
+            </div>
+            <div class="score-large" id="aiDurationText">-- detik</div>
+            <p class="score-subtext" id="aiDurationNote">Ekspektasi sekuensial: 0.8s | Ekspektasi paralel: ~0.5s</p>
+          </div>
+
+          <div class="models-grid">
+            <!-- Model A RF -->
+            <div id="cardModelRf" class="model-mini-card neutral">
+              <div class="model-badge-row">
+                <span class="model-name">Model A: Random Forest</span>
+                <span class="pill-latency">~0.3s</span>
+              </div>
+              <div class="model-verdict" id="rfPrediction">STANDBY</div>
+              <div class="model-stats">Confidence: <strong id="rfConfidence">--</strong></div>
+            </div>
+
+            <!-- Model B SVM -->
+            <div id="cardModelSvm" class="model-mini-card neutral">
+              <div class="model-badge-row">
+                <span class="model-name">Model B: SVM Kernel</span>
+                <span class="pill-latency">~0.5s</span>
+              </div>
+              <div class="model-verdict" id="svmPrediction">STANDBY</div>
+              <div class="model-stats">Confidence: <strong id="svmConfidence">--</strong></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- TERMINAL AUDIT LOG STREAM (Requirement 9.5) -->
+    <section class="panel-box terminal-panel">
+      <div class="panel-header terminal-bar">
+        <div class="panel-title-group">
+          <span class="icon-chip">⌘</span>
+          <div>
+            <h3>Security Telemetry & Live Event Log Console</h3>
+            <span class="terminal-status">LIVE AUDIT STREAM ACTIVE</span>
+          </div>
+        </div>
+        <button id="clearLogBtn" class="btn-clear-stream">Bersihkan Log</button>
+      </div>
+
+      <div id="consoleLogArea" class="terminal-screen">
+        <div class="log-entry system">
+          <span class="log-time">[BOOT]</span>
+          <span class="log-msg">AegisGuard Defense Subsystem initialized. Web Crypto API hardware acceleration ready.</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="main-footer">
+    <div class="footer-inner">
+      <span>AegisGuard Security Systems &bull; Enterprise Operations Suite</span>
+      <span>Engineered with FastAPI, Node.js Serverless & Web Crypto Subtle</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

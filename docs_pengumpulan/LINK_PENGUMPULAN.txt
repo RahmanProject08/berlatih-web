@@ -1,0 +1,6 @@
+1. LINK GITHUB REPOSITORY (WAJIB PUBLIC):
+https://github.com/RahmanProject08/berlatih-web
+
+2. LINK VERCEL DEPLOYMENT (LIVE URL):
+https://berlatih-web.vercel.app
+

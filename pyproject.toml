@@ -1,0 +1,14 @@
+﻿[project]
+name = "berlatih-web"
+version = "0.1.0"
+description = "Integrated Web Security Operations Center"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn>=0.30.0",
+    "pydantic>=2.0.0"
+]
+
+[tool.vercel]
+entrypoint = "api.proses_ai:app"
