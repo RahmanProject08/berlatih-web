@@ -1,0 +1,48 @@
+# ==============================================================================
+# PANDUAN LENGKAP SETUP INTEGRASI: GITHUB, VERCEL & SUPABASE
+# ==============================================================================
+
+### 1. KONFIGURASI GITHUB REPOSITORY SECRETS
+Lokasi: Buka Repositori GitHub > Settings > Secrets and variables > Actions
+Klik: "New repository secret" untuk setiap variabel di bawah ini:
+
+1. Nama: VERCEL_TOKEN
+   Value: [MASUKKAN_VERCEL_TOKEN_MILIK_ANDA]
+
+2. Nama: SUPABASE_URL
+   Value: https://dinpfdavuieaywyanwfm.supabase.co
+
+3. Nama: SUPABASE_ANON_KEY
+   Value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRpbnBmZGF2dWllYXl3eWFud2ZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTEyOTU1ODAsImV4cCI6MjEwNjg3MTU4MH0.71eHwU0fK6iyEBUeRAgVXg3y05PGfuKgc7pXwHA3KFg
+
+4. Nama: TELEGRAM_BOT_TOKEN
+   Value: 8896404356:AAHxCmmd9-RapO0jFegsjZw0XyFeCdTToS8
+
+5. Nama: TELEGRAM_CHAT_ID
+   Value: 1066507201
+
+6. Nama: HMAC_SECRET
+   Value: default_hmac_secret_key_2026
+
+
+### 2. KONFIGURASI VERCEL ENVIRONMENT VARIABLES
+Lokasi: Dashboard Vercel > Project 'berlatih-web' > Settings > Environment Variables
+Tambahkan variabel berikut (Centang: Production, Preview, Development):
+
+- SUPABASE_URL = https://dinpfdavuieaywyanwfm.supabase.co
+- SUPABASE_ANON_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRpbnBmZGF2dWllYXl3eWFud2ZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTEyOTU1ODAsImV4cCI6MjEwNjg3MTU4MH0.71eHwU0fK6iyEBUeRAgVXg3y05PGfuKgc7pXwHA3KFg
+- TELEGRAM_BOT_TOKEN = 8896404356:AAHxCmmd9-RapO0jFegsjZw0XyFeCdTToS8
+- TELEGRAM_CHAT_ID = 1066507201
+- HMAC_SECRET = default_hmac_secret_key_2026
+
+
+### 3. KONFIGURASI WEBHOOK DI SUPABASE
+Lokasi: Dashboard Supabase > Database > Webhooks > Create a new webhook
+- Name: security_threat_webhook
+- Table: Pilih tabel ancaman / audit logs (misal: 'threat_logs' atau 'audit_logs')
+- Events: INSERT
+- Method: POST
+- URL: https://[URL_DOMAIN_VERCEL_ANDA]/api/webhook
+- HTTP Headers:
+    - x-signature: [Signature HMAC-SHA256 dari payload menggunakan default_hmac_secret_key_2026]
+    - Content-Type: application/json
